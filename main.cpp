@@ -2,65 +2,71 @@
 
 int main(){
 
-    int quantidadeAlunos;
-    float nota1;
-    float nota2;
-    float nota3;
-    float media;
+    int opcaoPagamento;
+    int qtdParafusos, qtdPorca, qtdArruela, qtdAbrasadeira, qtdChaveFenda, qtdChavePhilips;
+    float valorParafuso = 0.50, valorPorca = 0.30, valorArruela = 0.20, valorAbrasadeira = 1.00, valorChaveFenda = 2.00, valorChavePhilips = 2.50;
+    float  valorTotalParafuso, valorTotalPorca, valorTotalArruela, valorTotalAbrasadeira, valorTotalChaveFenda, valorTotalChavePhilips;
+    float juros = 1.20;
+    float desconto = 0.80;
+    float valorTotalCompra, valorFinalCompra;
+    float qtdTotalprodutos;
 
-         std::cout<<"\nBoa noite orientador\n"<<std::endl;
+    std::cout<< "Digite a quantidade de parafusos: "<<std::endl;
+    std::cin>> qtdParafusos;
+    std::cout<< "Digite a quantidade de porcas: "<<std::endl;
+    std::cin>> qtdPorca;
+    std::cout<< "Digite a quantidade de arruelas: "<<std::endl;
+    std::cin>> qtdArruela;
+    std::cout<< "Digite a quantidade de abrasadeiras: "<<std::endl;
+    std::cin>> qtdAbrasadeira;
+    std::cout<< "Digite a quantidade de chaves de fenda: "<<std::endl;
+    std::cin>> qtdChaveFenda;
+    std::cout<< "Digite a quantidade de chaves de philips: "<<std::endl;
+    std::cin>> qtdChavePhilips;
 
-    int repetir;
+    int produtosComprados[6] = {qtdParafusos, qtdPorca, qtdArruela, qtdAbrasadeira, qtdChaveFenda, qtdChavePhilips};
 
-    do{
-        std::cout<<"Qual a quantidade de alunos que calculara a media? "<<std::endl;
-        std::cin>>quantidadeAlunos;
-    }while(quantidadeAlunos <= 0 );
-
-    for(int i = 0; i <quantidadeAlunos; i++){
-        std::cout<<"\nDigite a primeira nota do aluno "<<i+1<<": "<<std::endl;
-        std::cin>>nota1;
-        std::cout<<"\nDigite a segunda nota do aluno "<<i+1<<": "<<std::endl;
-        std::cin>>nota2;
-        std::cout<<"\nDigite a terceira nota do aluno "<<i+1<<": "<<std::endl;
-        std::cin>>nota3;
-        
-        media = (nota1 + nota2 + nota3) / 3;
-        
-        std::cout<<"\nA media do aluno "<<i+1<<" e: "<<media<<std::endl;
+    for(int i = 0; i < 6; i++){
+        std::cout<<"\nProdutos comprados: "<<produtosComprados[i]<<std::endl;
     }
 
-    if (media >= 7){
-        std::cout<<"\nO aluno esta aprovado com media: "<<media<<std::endl;
-
-    }else if(media >= 5 && media < 7){
-        std::cout<<"\n O aluno esta de recuperacao com media: "<<media<<std::endl;
+    std::cout<<"\n\nQuantidade total dos produtos: "<<qtdParafusos + qtdPorca + qtdArruela + qtdAbrasadeira + qtdChaveFenda + qtdChavePhilips<<std::endl;
     
-    }else{(media < 4.99);
-        std::cout<<"\n O aluno esta reprovado com media: "<<media<<std::endl;
-    }
-    
-    int opcao = 0;
 
-    while (opcao != 1 && opcao != 2){
-        std::cout<<"\nDeseja calcular a media de outros alunos? (1 - sim / 2 - nao)"<<std::endl;
-        std::cin>>opcao;
+    valorTotalParafuso = qtdParafusos * valorParafuso;
+    valorTotalPorca = qtdPorca * valorPorca;
+    valorTotalArruela = qtdArruela * valorArruela;
+    valorTotalAbrasadeira = qtdAbrasadeira * valorAbrasadeira;
+    valorTotalChaveFenda = qtdChaveFenda * valorChaveFenda;
+    valorTotalChavePhilips = qtdChavePhilips * valorChavePhilips;
 
-    if (opcao == 1){
-       main();
-    
-    }else if (opcao == 2){
-        std::cout<<"\nObrigado por usar o programa, ate o proximo trimestre!!"<<std::endl;
+    valorTotalCompra = valorTotalParafuso + valorTotalPorca + valorTotalArruela + valorTotalAbrasadeira + valorTotalChaveFenda + valorTotalChavePhilips;
 
+    std::cout<<"\nValor total da compra: "<<valorTotalCompra<<std::endl;
+
+    std::cout<<"\nQual sera a forma de pagamento? "<<std::endl;
+    std::cout<<"1 === dinheiro ==="<<std::endl;
+    std::cout<<"2 === cartao ==="<<std::endl;
+    std::cout<<"3 === pix ===\n"<<std::endl;
+    std::cin>> opcaoPagamento;
+
+    if(opcaoPagamento == 1){
+        valorFinalCompra = valorTotalCompra * desconto;
+        std::cout<<"\nValor final da compra e: "<<valorFinalCompra<<std::endl;
+    }else if(opcaoPagamento == 2){
+        valorFinalCompra = valorTotalCompra * juros;
+        std::cout<<"\nValor final da compra e: "<<valorFinalCompra<<std::endl;
+    } else if(opcaoPagamento == 3){
+        valorFinalCompra = valorTotalCompra;
+        std::cout<<"\nValor final da compra e: "<<valorFinalCompra<<std::endl;
     }else{
-        std::cout<<"\nOpcao invalida, por favor escolha opcao 1 para sim ou opcao 2 para nao."<<std::endl;
+        std::cout<<"\nOpcao de pagamento invalida!"<<std::endl;
     }
 
-    }
+    std::cout<<"\nObrigado pela preferencia!!"<<std::endl;
 
-       
 
-  
+
 
      return 0;
 }
